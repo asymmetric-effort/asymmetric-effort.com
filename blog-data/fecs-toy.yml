@@ -1,0 +1,8 @@
+- h1: "FECs Toy"
+  p: |
+    This post demonstrates a toy example of using forward error correction (FECs).
+    It explains the basics and shows how simple coding can detect and correct errors.
+  code: |
+    // Example FEC snippet
+    const encoded = encode('hello');
+    const decoded = decode(encoded);

@@ -19,6 +19,7 @@ assert.strictEqual(posts[0].dd, 'Description');
 
 const index = await loadArticleIndex();
 assert.ok(Array.isArray(index) && index.length >= 1);
+assert.ok(index.includes('fecs-toy.yml'));
 const article = await loadArticle(index[0]);
 assert.strictEqual(article.h1, 'Welcome to the Blog');
 

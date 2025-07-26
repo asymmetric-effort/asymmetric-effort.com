@@ -3,7 +3,13 @@ README.md
 
 Code for asymmetric-effort.com
 
+## Testing
 
+Run the unit tests with:
+
+```bash
+npm test
+```
 
 Tips: use the following to add Latex to Markdown:
 ```html
