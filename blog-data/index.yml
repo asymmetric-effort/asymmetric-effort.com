@@ -1,0 +1,13 @@
+- h1: "Welcome to the Blog"
+  p: |
+    This is the first blog post. We are excited to launch our blog powered by React.
+    Expect updates on our projects here.
+  ul:
+    - First item
+    - Second item
+  img: /logo.png
+  table:
+    - "Col1|Col2"
+    - "A|B"
+  dt: Example
+  dd: Description

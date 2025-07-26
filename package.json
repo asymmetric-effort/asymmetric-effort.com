@@ -1,0 +1,9 @@
+{
+  "name": "asymmetric-effort.github.io",
+  "version": "1.0.0",
+  "description": "Asymmetric Effort static site",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/test-blog.js"
+  }
+}

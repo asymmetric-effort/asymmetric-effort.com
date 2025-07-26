@@ -1,0 +1,71 @@
+/*
+ * Copyright (c) 2022-2025 Asymmetric Effort LLC
+ */
+
+:root {
+  color-scheme: light dark;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+nav {
+  margin-left: auto;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: inherit;
+}
+
+#app {
+  padding: 20px;
+  flex: 1;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+}
+
+.blog-container {
+  display: flex;
+}
+
+.blog-container aside {
+  width: 200px;
+  padding-right: 10px;
+}
+
+.blog-container .pager {
+  margin: 10px 0;
+}
+
+.article-wrapper {
+  flex: 1;
+}
