@@ -2,16 +2,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import Contact from './pages/Contact';
-import GreyNet from './projects/GreyNet';
-import CryptoTap from './projects/CryptoTap';
-import Gremlin from './projects/Gremlin';
+import Header from './components/Header.js';
+import Navbar from './components/Navbar.js';
+import Footer from './components/Footer.js';
+import Home from './pages/Home.js';
+import About from './pages/About.js';
+import Blog from './pages/Blog.js';
+import Contact from './pages/Contact.js';
+import GreyNet from './projects/GreyNet.js';
+import CryptoTap from './projects/CryptoTap.js';
+import Gremlin from './projects/Gremlin.js';
 /** Main application component wiring the router. */
 function App() {
     return (React.createElement(HashRouter, null,
