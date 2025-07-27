@@ -2,6 +2,6 @@
   "name": "asymmetric-effort",
   "version": "1.0.0",
   "scripts": {
-    "test": "node tests/test-blog.js"
+    "test": "node tests/test-blog.js && node tests/test-dist-imports.js"
   }
 }
