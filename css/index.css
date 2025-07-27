@@ -1,0 +1,8 @@
+/* (c) 2025 Asymmetric Effort, LLC. All Rights Reserved. */
+html, body, #root { height: 100%; margin: 0; }
+body { font-family: Arial, sans-serif; }
+@media (prefers-color-scheme: dark) {
+  body { background: #000; color: #fff; }
+}
+nav a { margin: 0 10px; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
