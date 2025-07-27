@@ -1,64 +1,34 @@
 // (c) 2025 Asymmetric Effort, LLC. All Rights Reserved.
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route, Link } from 'react-router-dom';
-
-/** Display the landing page content. */
-function Home() {
-  return (
-    <div>
-      <h1>About Us</h1>
-      <p>We are Asymmetric Effort.</p>
-    </div>
-  );
-}
-
-/** Display company information. */
-function About() {
-  return (
-    <div>
-      <h1>About</h1>
-      <p>Company information.</p>
-    </div>
-  );
-}
-
-/** Show contact details. */
-function Contact() {
-  return (
-    <div>
-      <h1>Contact Us</h1>
-      <p>scaldwell@asymmetric-effort.com</p>
-    </div>
-  );
-}
-
-/** Placeholder for the blog page. */
-function Blog() {
-  return (
-    <div>
-      <h1>Blog</h1>
-      <p>Blog coming soon.</p>
-    </div>
-  );
-}
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
+import GreyNet from './projects/GreyNet';
+import CryptoTap from './projects/CryptoTap';
+import Gremlin from './projects/Gremlin';
 
 /** Main application component wiring the router. */
 function App() {
   return (
     <HashRouter>
-      <nav>
-        <Link to="/">Home</Link> |
-        <Link to="/about">About</Link> |
-        <Link to="/blog">Blog</Link> |
-        <Link to="/contact">Contact Us</Link>
-      </nav>
+      <Header />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/projects/greynet" element={<GreyNet />} />
+        <Route path="/projects/cryptotap" element={<CryptoTap />} />
+        <Route path="/projects/gremlin" element={<Gremlin />} />
       </Routes>
+      <Footer />
     </HashRouter>
   );
 }

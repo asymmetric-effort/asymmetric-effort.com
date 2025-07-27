@@ -13,6 +13,13 @@ jobs:
           node-version: '18'
       - run: npm test
       - run: tsc
+      - name: Configure CNAME
+        run: |
+          if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+            echo 'dev.asymmetric-effort.com' > CNAME
+          else
+            echo 'asymmetric-effort.com' > CNAME
+          fi
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
