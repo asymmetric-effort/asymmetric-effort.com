@@ -1,14 +1,19 @@
 # Asymmetric Effort Website
 
-This repository contains the source for the Asymmetric Effort single page
-application. The site is built with TypeScript and React and deployed to
-GitHub Pages. A minimal YAML loader demonstrates loading blog content in both
-Node tests and the browser.
+This repository hosts the single-page React application for [Asymmetric Effort](https://asymmetric-effort.com).  The site is written in TypeScript and deployed to GitHub Pages via GitHub Actions.  A small YAML loader is used to render blog posts both in Node tests and in the browser.
 
 ## Development
 
-Run tests with:
+Run the unit tests:
 
 ```bash
 npm test
 ```
+
+Compile the TypeScript source to JavaScript:
+
+```bash
+tsc
+```
+
+The compiled files are output to the `dist/` directory and served by `index.html`.

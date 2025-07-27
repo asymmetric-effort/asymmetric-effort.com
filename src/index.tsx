@@ -3,11 +3,47 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 
-function Home() { return <div><h1>About Us</h1><p>We are Asymmetric Effort.</p></div>; }
-function About() { return <div><h1>About</h1><p>Company information.</p></div>; }
-function Contact() { return <div><h1>Contact Us</h1><p>scaldwell@asymmetric-effort.com</p></div>; }
-function Blog() { return <div><h1>Blog</h1><p>Blog coming soon.</p></div>; }
+/** Display the landing page content. */
+function Home() {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>We are Asymmetric Effort.</p>
+    </div>
+  );
+}
 
+/** Display company information. */
+function About() {
+  return (
+    <div>
+      <h1>About</h1>
+      <p>Company information.</p>
+    </div>
+  );
+}
+
+/** Show contact details. */
+function Contact() {
+  return (
+    <div>
+      <h1>Contact Us</h1>
+      <p>scaldwell@asymmetric-effort.com</p>
+    </div>
+  );
+}
+
+/** Placeholder for the blog page. */
+function Blog() {
+  return (
+    <div>
+      <h1>Blog</h1>
+      <p>Blog coming soon.</p>
+    </div>
+  );
+}
+
+/** Main application component wiring the router. */
 function App() {
   return (
     <HashRouter>
