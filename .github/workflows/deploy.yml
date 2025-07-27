@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v4
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v2
         with:
           path: .
   deploy:
@@ -28,6 +28,5 @@ jobs:
       - id: deploy
         uses: actions/deploy-pages@v2
         with:
-          branch: ${{ github.ref_name == 'main' && 'gh-pages' || format('gh-pages-{0}', github.ref_name) }}
-          commit-message: Deploy ${{ github.ref }}
-          cname: ${{ github.ref_name == 'main' && 'asymmetric-effort.com' || format('{0}.asymmetric-effort.com', github.ref_name) }}
+          artifact_name: github-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
