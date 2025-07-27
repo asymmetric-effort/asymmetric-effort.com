@@ -4,26 +4,57 @@ const path = require('path');
 const assert = require('assert');
 
 /**
- * Validate that all import paths in dist/index.js include the .js extension and
- * that the referenced modules exist on disk. This prevents 404 errors when the
- * browser attempts to load modules by ensuring each import target is available.
+ * Recursively gather all JavaScript files under a directory.
+ *
+ * @param {string} dir - Directory to search.
+ * @returns {string[]} Array of JS file paths.
+ */
+function collectJsFiles(dir) {
+  const files = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const resolved = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...collectJsFiles(resolved));
+    } else if (entry.isFile() && resolved.endsWith('.js')) {
+      files.push(resolved);
+    }
+  }
+  return files;
+}
+
+/**
+ * Validate that all relative import paths in the dist directory include the
+ * `.js` extension and reference files that exist on disk. Checking every file
+ * helps prevent browser 404 errors for missing modules.
  */
 function validateImports() {
-  const indexPath = path.join(__dirname, '..', 'dist', 'index.js');
-  const text = fs.readFileSync(indexPath, 'utf8');
-  const importRegex = /import\s+[^'"\n]+from\s+'(\.\/[^']+)'/g;
-  let match;
-  const seen = [];
-  while ((match = importRegex.exec(text)) !== null) {
-    const importPath = match[1];
-    // Ensure the import includes the .js extension.
-    assert.ok(importPath.endsWith('.js'), `${importPath} missing .js extension`);
-    const filePath = path.join(__dirname, '..', 'dist', importPath);
-    seen.push(filePath);
-    // Ensure the referenced file exists.
-    assert.ok(fs.existsSync(filePath), `${filePath} does not exist`);
+  const distDir = path.join(__dirname, '..', 'dist');
+  const jsFiles = collectJsFiles(distDir);
+  const importRegex = /import\s+[^'"\n]+from\s+['"]([^'"]+)['"]/g;
+  let checked = 0;
+
+  for (const file of jsFiles) {
+    const text = fs.readFileSync(file, 'utf8');
+    let match;
+    while ((match = importRegex.exec(text)) !== null) {
+      const importPath = match[1];
+      if (importPath.startsWith('./') || importPath.startsWith('../')) {
+        assert.ok(
+          importPath.endsWith('.js'),
+          `${file}: ${importPath} missing .js extension`
+        );
+
+        const resolved = path.resolve(path.dirname(file), importPath);
+        assert.ok(
+          fs.existsSync(resolved),
+          `${file}: ${resolved} does not exist`
+        );
+        checked++;
+      }
+    }
   }
-  assert.ok(seen.length > 0, 'No imports found to validate');
+
+  assert.ok(checked > 0, 'No relative imports found to validate');
   console.log('Import validation passed');
 }
 
