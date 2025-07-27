@@ -17,3 +17,8 @@ tsc
 ```
 
 The compiled files are output to the `dist/` directory and served by `index.html`.
+
+During deployment, the workflow automatically updates the `CNAME` file to use
+`dev.asymmetric-effort.com` when the `dev` branch is published and
+`asymmetric-effort.com` when `main` is published.
+

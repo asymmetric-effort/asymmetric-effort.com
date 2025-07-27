@@ -6,3 +6,35 @@ body { font-family: Arial, sans-serif; }
 }
 nav a { margin: 0 10px; text-decoration: none; }
 nav a:hover { text-decoration: underline; }
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.logo {
+  height: 40px;
+}
+
+.navbar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: inherit;
+  padding: 5px;
+  z-index: 1;
+  flex-direction: column;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
