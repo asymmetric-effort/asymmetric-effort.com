@@ -1,53 +1,40 @@
-*{
-    font-family: Tahoma, sans-serif;
-    font-size:12pt;
-    border-color:#111111;
-    border-width: 1px;
+/* (c) 2025 Asymmetric Effort, LLC. All Rights Reserved. */
+html, body, #root { height: 100%; margin: 0; }
+body { font-family: Arial, sans-serif; }
+@media (prefers-color-scheme: dark) {
+  body { background: #000; color: #fff; }
 }
-#header{
-    display:table;
-    border-color:#111111;
-    border-width: 1px;
-}
-#logo{
-    float:left;
-    min-width:200px;
-    min-height:200px;
-}
-#masthead{
-    float:left;
-    border-color:#111111;
-    border-width: 1px;
-    text-align: center;
-    vertical-align: center;
-}
-h1{
-    font-size:16pt;
-    font-weight: bold;
-}
-h2{
-    font-size:14pt;
-    font-weight: bold;
-}
-h3{
-    font-size:12pt;
-    font-weight: bold;
-}
-h4{
-    font-size:12pt;
-    font-weight: normal;
+nav a { margin: 0 10px; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
-.divider{
-    width:100%;
-    margin-top:5px;
-    margin-bottom:5px;
+.logo {
+  height: 40px;
 }
-article{
-    margin-bottom:20px;
-    padding-bottom:20px;
+
+.navbar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
 }
-footer{
-    margin-top:5px;
-    padding-top:5px;
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: inherit;
+  padding: 5px;
+  z-index: 1;
+  flex-direction: column;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
 }

@@ -1,28 +1,24 @@
-README.md
-=========
+# Asymmetric Effort Website
 
-Code for asymmetric-effort.com
+This repository hosts the single-page React application for [Asymmetric Effort](https://asymmetric-effort.com).  The site is written in TypeScript and deployed to GitHub Pages via GitHub Actions.  A small YAML loader is used to render blog posts both in Node tests and in the browser.
 
+## Development
 
+Run the unit tests:
 
-Tips: use the following to add Latex to Markdown:
-```html
-<script type="text/javascript"
-  src="https://asymmetric-effort.com/js/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      processEscapes: true},
-      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
-      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
-      TeX: {
-      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
-      equationNumbers: {
-      autoNumber: "AMS"
-      }
-    }
-  });
-</script>
+```bash
+npm test
 ```
+
+Compile the TypeScript source to JavaScript:
+
+```bash
+tsc
+```
+
+The compiled files are output to the `dist/` directory and served by `index.html`.
+
+During deployment, the workflow automatically updates the `CNAME` file to use
+`dev.asymmetric-effort.com` when the `dev` branch is published and
+`asymmetric-effort.com` when `main` is published.
+
