@@ -1,7 +1,7 @@
 // (c) 2025 Asymmetric Effort, LLC. All Rights Reserved.
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.js';
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
@@ -14,7 +14,7 @@ import CryptoTap from './projects/CryptoTap.js';
 import Gremlin from './projects/Gremlin.js';
 /** Main application component wiring the router. */
 function App() {
-    return (React.createElement(HashRouter, null,
+    return (React.createElement(BrowserRouter, null,
         React.createElement(Header, null),
         React.createElement(Navbar, null),
         React.createElement(Routes, null,
