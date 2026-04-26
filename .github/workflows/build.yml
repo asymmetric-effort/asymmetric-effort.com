@@ -4,12 +4,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Clone SpecifyJS
+        run: git clone https://github.com/asymmetric-effort/specifyjs.git ../specifyjs
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - name: Run tests
-        run: npm test
-      - name: Compile TypeScript
-        run: tsc
+          node-version: '22'
+      - name: Build SpecifyJS
+        run: cd ../specifyjs/core && bun install && bun run build
+      - name: Install dependencies
+        run: npm install
+      - name: Type check
+        run: npx tsc --noEmit
+      - name: Build
+        run: npm run build

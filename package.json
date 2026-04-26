@@ -1,7 +1,17 @@
 {
   "name": "asymmetric-effort",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "private": true,
   "scripts": {
-    "test": "node tests/test-blog.js && node tests/test-dist-imports.js && node tests/test-router.js"
+    "dev": "vite --port 3000",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "specifyjs-framework": "file:../specifyjs/core"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vite": "^5.4.0"
   }
 }

@@ -6,23 +6,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Clone SpecifyJS
+        run: git clone https://github.com/asymmetric-effort/specifyjs.git ../specifyjs
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - run: npm test
-      - run: tsc
+          node-version: '22'
+      - name: Build SpecifyJS
+        run: cd ../specifyjs/core && bun install && bun run build
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
       - name: Configure CNAME
         run: |
           if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
-            echo 'dev.asymmetric-effort.com' > CNAME
+            echo 'dev.asymmetric-effort.com' > dist/CNAME
           else
-            echo 'asymmetric-effort.com' > CNAME
+            echo 'asymmetric-effort.com' > dist/CNAME
           fi
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: ${{ github.ref == 'refs/heads/main' && 'gh-pages' || 'dev-pages' }}
-          publish_dir: ./
+          publish_dir: ./dist

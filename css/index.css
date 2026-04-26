@@ -1,40 +1,79 @@
-/* (c) 2025 Asymmetric Effort, LLC. All Rights Reserved. */
-html, body, #root { height: 100%; margin: 0; }
-body { font-family: Arial, sans-serif; }
-@media (prefers-color-scheme: dark) {
-  body { background: #FFF; color: #000; }
+/* (c) 2022 Asymmetric Effort, LLC. All Rights Reserved. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  line-height: 1.6;
 }
-nav a { margin: 0 10px; text-decoration: none; }
-nav a:hover { text-decoration: underline; }
-.header {
+
+/* Layout */
+#root {
   display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-}
-
-.logo {
-  height: 40px;
-}
-
-.navbar {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: inherit;
-  padding: 5px;
-  z-index: 1;
   flex-direction: column;
+  min-height: 100vh;
+}
+main { flex: 1; max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; width: 100%; }
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+header .logo { height: 40px; }
+
+/* Navigation */
+nav { display: flex; gap: 1.5rem; align-items: center; }
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+}
+nav a:hover, nav a.active { color: #0066cc; }
+
+/* Footer */
+footer {
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+}
+footer .version {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #999;
 }
 
-.dropdown:hover .dropdown-content {
-  display: flex;
+/* Divider */
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+
+/* Headings */
+h1 { font-size: 2rem; margin-bottom: 1rem; color: #111; }
+h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: #222; }
+
+/* Paragraphs */
+p { margin-bottom: 1rem; }
+
+/* Project cards */
+.project-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.2s;
 }
+.project-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.project-card h2 { margin-bottom: 0.5rem; }
+.project-card a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+.project-card a:hover { text-decoration: underline; }
