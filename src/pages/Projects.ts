@@ -1,4 +1,5 @@
 import { createElement } from 'specifyjs-framework';
+import { setPageMeta } from '../utils/setPageMeta';
 
 interface Project {
   name: string;
@@ -31,6 +32,11 @@ const projects: Project[] = [
 ];
 
 export function Projects() {
+  setPageMeta(
+    'Asymmetric Effort - Projects',
+    'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer and Convocate.',
+    'SpecifyJS, Scrutineer, Convocate, open source, TypeScript, security, collaboration'
+  );
   return createElement('main', null,
     createElement('h1', null, 'Our Projects'),
     ...projects.map((project) =>

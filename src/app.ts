@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { AboutUs } from './pages/AboutUs';
 import { Projects } from './pages/Projects';
+import { Resources } from './pages/Resources';
 
 // Enforce HTTPS in production
 if (
@@ -20,6 +21,7 @@ function App() {
     createElement(Header, null),
     createElement(Route, { path: '/', component: AboutUs, exact: true }),
     createElement(Route, { path: '/projects', component: Projects }),
+    createElement(Route, { path: '/resources', component: Resources }),
     createElement(Footer, null),
   );
 }

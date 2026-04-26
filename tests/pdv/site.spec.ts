@@ -29,6 +29,7 @@ test.describe('Post-Deployment Verification', () => {
     await page.goto('/');
     await expect(page.locator('nav')).toContainText('About Us');
     await expect(page.locator('nav')).toContainText('Projects');
+    await expect(page.locator('nav')).toContainText('Resources');
   });
 
   test('footer displays copyright with current year', async ({ page }) => {
@@ -86,6 +87,18 @@ test.describe('Post-Deployment Verification', () => {
     const response = await request.get('/logo.png');
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toContain('image/png');
+  });
+
+  test('resources page loads and lists coding standards', async ({ page }) => {
+    await page.goto('/#/resources');
+    await expect(page.locator('h1')).toContainText('Resources');
+
+    const cards = page.locator('.project-card');
+    await expect(cards).toHaveCount(1);
+
+    const link = page.locator('.project-card a', { hasText: 'Coding Standards' });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('href', 'https://coding-standards.asymmetric-effort.com');
   });
 
   test('no GreyNet references on site', async ({ page }) => {

@@ -1,6 +1,12 @@
 import { createElement } from 'specifyjs-framework';
+import { setPageMeta } from '../utils/setPageMeta';
 
 export function AboutUs() {
+  setPageMeta(
+    'Asymmetric Effort - About Us',
+    'Asymmetric Effort builds open-source frameworks, security tooling and collaboration platforms to help everyone stay safe online.',
+    'Asymmetric Effort, cybersecurity, open source, security tooling, about us'
+  );
   return createElement('main', null,
     createElement('h1', null, 'About Us'),
     createElement('p', null,
