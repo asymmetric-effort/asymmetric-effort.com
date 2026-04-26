@@ -11,9 +11,8 @@ const projects: Project[] = [
     name: 'SpecifyJS',
     url: 'https://specifyjs.asymmetric-effort.com',
     description:
-      'A declarative TypeScript UI framework with zero runtime dependencies. ' +
-      'Full React 18 API parity, built-in routing, and a 56-component library ' +
-      'in under 4KB gzipped.',
+      'A declarative TypeScript UI framework with zero runtime dependencies, ' +
+      'built-in routing, and a 56-component library in under 4KB gzipped.',
   },
   {
     name: 'Scrutineer',
