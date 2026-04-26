@@ -3,20 +3,16 @@ on:
   push:
     branches: [main, dev]
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Clone SpecifyJS
         run: git clone https://github.com/asymmetric-effort/specifyjs.git ../specifyjs
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v2
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Build SpecifyJS
-        run: cd ../specifyjs/core && bun install && bun run build
       - name: Install dependencies
         run: npm install
       - name: Build
@@ -34,3 +30,41 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: ${{ github.ref == 'refs/heads/main' && 'gh-pages' || 'dev-pages' }}
           publish_dir: ./dist
+
+  pdv:
+    name: Post-Deployment Verification
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clone SpecifyJS
+        run: git clone https://github.com/asymmetric-effort/specifyjs.git ../specifyjs
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - name: Wait for deployment to propagate
+        run: sleep 30
+      - name: Set base URL
+        id: url
+        run: |
+          if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+            echo "base_url=https://dev.asymmetric-effort.com" >> "$GITHUB_OUTPUT"
+          else
+            echo "base_url=https://asymmetric-effort.com" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run PDV tests
+        env:
+          PDV_BASE_URL: ${{ steps.url.outputs.base_url }}
+        run: npx playwright test
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdv-report
+          path: playwright-report/
+          retention-days: 14

@@ -1,8 +1,6 @@
-import { createElement, useHead } from 'specifyjs-framework';
+import { createElement } from 'specifyjs-framework';
 
 export function AboutUs() {
-  useHead({ title: 'Asymmetric Effort - About Us' });
-
   return createElement('main', null,
     createElement('h1', null, 'About Us'),
     createElement('p', null,

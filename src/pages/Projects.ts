@@ -1,4 +1,4 @@
-import { createElement, useHead } from 'specifyjs-framework';
+import { createElement } from 'specifyjs-framework';
 
 interface Project {
   name: string;
@@ -32,8 +32,6 @@ const projects: Project[] = [
 ];
 
 export function Projects() {
-  useHead({ title: 'Asymmetric Effort - Projects' });
-
   return createElement('main', null,
     createElement('h1', null, 'Our Projects'),
     ...projects.map((project) =>
