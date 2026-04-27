@@ -1,6 +1,6 @@
 import '../css/index.css';
-import { createElement, Router, Route } from 'specifyjs-framework';
-import { createRoot } from 'specifyjs-framework/dom';
+import { createElement, Router, Route } from '@asymmetric-effort/specifyjs';
+import { createRoot } from '@asymmetric-effort/specifyjs/dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { AboutUs } from './pages/AboutUs';

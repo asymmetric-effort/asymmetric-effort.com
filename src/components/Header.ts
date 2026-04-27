@@ -1,4 +1,4 @@
-import { createElement, Link } from 'specifyjs-framework';
+import { createElement, Link } from '@asymmetric-effort/specifyjs';
 
 export function Header() {
   return createElement('header', null,

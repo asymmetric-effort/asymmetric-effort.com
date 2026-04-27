@@ -4,7 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "jsxImportSource": "specifyjs-framework",
+    "jsxImportSource": "@asymmetric-effort/specifyjs",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,

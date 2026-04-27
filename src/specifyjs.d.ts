@@ -1,4 +1,4 @@
-declare module 'specifyjs-framework' {
+declare module '@asymmetric-effort/specifyjs' {
   export function createElement(type: any, props: any, ...children: any[]): any;
   export function useState<T>(initial: T | (() => T)): [T, (v: T | ((prev: T) => T)) => void];
   export function useEffect(effect: () => void | (() => void), deps?: any[]): void;
@@ -11,6 +11,6 @@ declare module 'specifyjs-framework' {
   export function useNavigate(): (to: string, options?: { replace?: boolean }) => void;
 }
 
-declare module 'specifyjs-framework/dom' {
+declare module '@asymmetric-effort/specifyjs/dom' {
   export function createRoot(container: Element | null): { render(element: any): void };
 }

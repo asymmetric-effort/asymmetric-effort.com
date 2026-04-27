@@ -1,4 +1,4 @@
-import { createElement } from 'specifyjs-framework';
+import { createElement } from '@asymmetric-effort/specifyjs';
 import { setPageMeta } from '../utils/setPageMeta';
 
 interface Project {
