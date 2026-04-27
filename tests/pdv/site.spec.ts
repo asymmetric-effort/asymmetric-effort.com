@@ -50,11 +50,13 @@ test.describe('Post-Deployment Verification', () => {
     await expect(page.locator('h1')).toContainText('Our Projects');
 
     const cards = page.locator('.project-card');
-    await expect(cards).toHaveCount(3);
+    await expect(cards).toHaveCount(5);
 
     await expect(page.locator('.project-card >> text=SpecifyJS')).toBeVisible();
     await expect(page.locator('.project-card >> text=Scrutineer')).toBeVisible();
     await expect(page.locator('.project-card >> text=Convocate')).toBeVisible();
+    await expect(page.locator('.project-card h2', { hasText: 'Actions' })).toBeVisible();
+    await expect(page.locator('.project-card h2', { hasText: 'GreyNet' })).toBeVisible();
   });
 
   test('project links use HTTPS', async ({ page }) => {
@@ -161,12 +163,12 @@ test.describe('Post-Deployment Verification', () => {
     expect(loaded).toBe(true);
   });
 
-  test('no GreyNet references on site', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.locator('body')).not.toContainText('GreyNet');
-
+  test('GreyNet project has no external link', async ({ page }) => {
     await page.goto('/#/projects');
-    await expect(page.locator('body')).not.toContainText('GreyNet');
+    const greynetCard = page.locator('.project-card', { hasText: 'GreyNet' });
+    await expect(greynetCard).toBeVisible();
+    const links = greynetCard.locator('a');
+    await expect(links).toHaveCount(0);
   });
 
 });

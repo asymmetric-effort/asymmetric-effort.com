@@ -3,7 +3,7 @@ import { setPageMeta } from '../utils/setPageMeta';
 
 interface Project {
   name: string;
-  url: string;
+  url?: string;
   description: string;
 }
 
@@ -29,22 +29,36 @@ const projects: Project[] = [
       'A collaboration platform designed to bring teams together for secure, ' +
       'efficient communication and project coordination.',
   },
+  {
+    name: 'Actions',
+    url: 'https://actions.asymmetric-effort.com',
+    description:
+      'Reusable GitHub Actions and CI/CD workflows for Asymmetric Effort projects.',
+  },
+  {
+    name: 'GreyNet',
+    description:
+      'GreyNet provides decentralized, peer-to-peer zero trust network access ' +
+      'without reliance on centralized control planes. Nodes authenticate and ' +
+      'authorize each other directly using cryptographic identity, establishing ' +
+      'secure channels only after mutual verification.',
+  },
 ];
 
 export function Projects() {
   setPageMeta(
     'Asymmetric Effort - Projects',
-    'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer and Convocate.',
-    'SpecifyJS, Scrutineer, Convocate, open source, TypeScript, security, collaboration'
+    'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions and GreyNet.',
+    'SpecifyJS, Scrutineer, Convocate, Actions, GreyNet, open source, TypeScript, security, collaboration'
   );
   return createElement('main', null,
     createElement('h1', null, 'Our Projects'),
     ...projects.map((project) =>
       createElement('div', { className: 'project-card', key: project.name },
         createElement('h2', null,
-          createElement('a', { href: project.url, target: '_blank', rel: 'noopener noreferrer' },
-            project.name
-          )
+          project.url
+            ? createElement('a', { href: project.url, target: '_blank', rel: 'noopener noreferrer' }, project.name)
+            : project.name
         ),
         createElement('p', null, project.description),
       )
