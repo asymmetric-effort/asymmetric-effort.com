@@ -7,6 +7,14 @@ import { AboutUs } from './pages/AboutUs';
 import { Projects } from './pages/Projects';
 import { Resources } from './pages/Resources';
 
+// Detect system dark mode preference
+const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+function applyTheme(dark: boolean): void {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+}
+applyTheme(darkQuery.matches);
+darkQuery.addEventListener('change', (e) => applyTheme(e.matches));
+
 // Enforce HTTPS in production
 if (
   location.protocol === 'http:' &&
