@@ -101,6 +101,66 @@ test.describe('Post-Deployment Verification', () => {
     await expect(link).toHaveAttribute('href', 'https://coding-standards.asymmetric-effort.com');
   });
 
+  test('all internal navigation links work', async ({ page }) => {
+    // Collect all unique hash routes from nav links across all pages
+    const routes = ['/', '/#/projects', '/#/resources'];
+    for (const route of routes) {
+      await page.goto(route);
+      await expect(page.locator('#root')).not.toBeEmpty();
+      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator('header')).toBeVisible();
+      await expect(page.locator('footer')).toBeVisible();
+    }
+  });
+
+  test('all external links return a valid response', async ({ page, request }) => {
+    const routes = ['/', '/#/projects', '/#/resources'];
+    const externalLinks = new Set<string>();
+
+    // Collect all external links across all pages
+    for (const route of routes) {
+      await page.goto(route);
+      await page.waitForTimeout(500);
+      const links = page.locator('a[href^="https://"]');
+      const count = await links.count();
+      for (let i = 0; i < count; i++) {
+        const href = await links.nth(i).getAttribute('href');
+        if (href) externalLinks.add(href);
+      }
+    }
+
+    expect(externalLinks.size).toBeGreaterThan(0);
+
+    // Verify each external link returns a non-error response
+    const failures: string[] = [];
+    for (const url of externalLinks) {
+      try {
+        const response = await request.get(url, { timeout: 15_000 });
+        if (response.status() >= 400) {
+          failures.push(`${url} returned ${response.status()}`);
+        }
+      } catch (err: any) {
+        failures.push(`${url} failed: ${err.message}`);
+      }
+    }
+
+    if (failures.length > 0) {
+      throw new Error('Broken external links:\n' + failures.join('\n'));
+    }
+  });
+
+  test('logo image src is not broken', async ({ page }) => {
+    await page.goto('/');
+    const logo = page.locator('header img.logo');
+    const src = await logo.getAttribute('src');
+    expect(src).toBeTruthy();
+    // Verify the image actually loaded (naturalWidth > 0)
+    const loaded = await logo.evaluate(
+      (img: HTMLImageElement) => img.complete && img.naturalWidth > 0
+    );
+    expect(loaded).toBe(true);
+  });
+
   test('no GreyNet references on site', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('body')).not.toContainText('GreyNet');
