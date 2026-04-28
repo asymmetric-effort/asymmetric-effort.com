@@ -7,6 +7,7 @@ import path from 'path';
 // Once the npm package ships a dom bundle that imports from the main entry
 // instead of inlining, these aliases can be removed.
 const specifyCoreSrc = path.resolve(__dirname, '../specifyjs/core/src');
+const specifyComponents = path.resolve(__dirname, '../specifyjs/components');
 
 export default defineConfig({
   root: '.',
@@ -17,6 +18,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@asymmetric-effort/specifyjs/dom': path.join(specifyCoreSrc, 'dom/index.ts'),
+      '@asymmetric-effort/specifyjs/components/footer': path.join(specifyComponents, 'layout/footer/src/index.ts'),
       '@asymmetric-effort/specifyjs': path.join(specifyCoreSrc, 'index.ts'),
     },
   },

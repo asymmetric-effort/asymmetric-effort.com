@@ -42,7 +42,7 @@ test.describe('Post-Deployment Verification', () => {
 
   test('footer displays version', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('footer .version')).toContainText(/^v\d+\.\d+\.\d+$/);
+    await expect(page.locator('footer')).toContainText(/v\d+\.\d+\.\d+/);
   });
 
   test('projects page loads and lists all projects', async ({ page }) => {

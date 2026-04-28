@@ -11,6 +11,23 @@ declare module '@asymmetric-effort/specifyjs' {
   export function useNavigate(): (to: string, options?: { replace?: boolean }) => void;
 }
 
+declare module '@asymmetric-effort/specifyjs/components/footer' {
+  export interface FooterProps {
+    left?: unknown;
+    center?: unknown;
+    right?: unknown;
+    borderTop?: string;
+    background?: string;
+    color?: string;
+    fontSize?: string;
+    padding?: string;
+    maxWidth?: string;
+    className?: string;
+    ariaLabel?: string;
+  }
+  export function Footer(props: FooterProps): any;
+}
+
 declare module '@asymmetric-effort/specifyjs/dom' {
   export function createRoot(container: Element | null): { render(element: any): void };
 }

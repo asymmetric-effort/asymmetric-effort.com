@@ -88,20 +88,7 @@ nav a.active {
   color: #fff;
 }
 
-/* Footer */
-footer {
-  border-top: 1px solid var(--color-border);
-  padding: 24px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--color-text-muted);
-}
-
-footer .version {
-  margin-top: 4px;
-  font-size: 12px;
-  color: var(--color-text-muted);
-}
+/* Footer — styled by SpecifyJS Footer component via inline styles */
 
 /* Headings */
 h1 {
