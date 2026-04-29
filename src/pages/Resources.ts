@@ -16,11 +16,11 @@ const resources: Resource[] = [
 ];
 
 export function Resources() {
-  setPageMeta(
-    'Asymmetric Effort - Resources',
-    'Developer resources, coding standards and reference materials for Asymmetric Effort projects.',
-    'coding standards, developer resources, best practices, Asymmetric Effort'
-  );
+  setPageMeta({
+    title: 'Asymmetric Effort - Resources',
+    description: 'Developer resources, coding standards and reference materials for Asymmetric Effort projects.',
+    keywords: 'coding standards, developer resources, best practices, Asymmetric Effort',
+  });
   return createElement('main', null,
     createElement('h1', null, 'Resources'),
     ...resources.map((resource) =>

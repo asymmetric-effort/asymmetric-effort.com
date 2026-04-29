@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asymmetric-effort.com/sitemap.xml

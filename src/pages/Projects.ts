@@ -46,11 +46,11 @@ const projects: Project[] = [
 ];
 
 export function Projects() {
-  setPageMeta(
-    'Asymmetric Effort - Projects',
-    'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions and GreyNet.',
-    'SpecifyJS, Scrutineer, Convocate, Actions, GreyNet, open source, TypeScript, security, collaboration'
-  );
+  setPageMeta({
+    title: 'Asymmetric Effort - Projects',
+    description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions and GreyNet.',
+    keywords: 'SpecifyJS, Scrutineer, Convocate, Actions, GreyNet, open source, TypeScript, security, collaboration',
+  });
   return createElement('main', null,
     createElement('h1', null, 'Our Projects'),
     ...projects.map((project) =>

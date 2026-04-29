@@ -1,13 +1,18 @@
-export function setPageMeta(title: string, description: string, keywords: string): void {
-  document.title = title;
+export interface PageMeta {
+  title: string;
+  description: string;
+  keywords: string;
+}
 
-  let descTag = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-  if (descTag) {
-    descTag.content = description;
-  }
+function updateMeta(selector: string, value: string): void {
+  const el = document.querySelector(selector) as HTMLMetaElement | null;
+  if (el) el.content = value;
+}
 
-  let kwTag = document.querySelector('meta[name="keywords"]') as HTMLMetaElement | null;
-  if (kwTag) {
-    kwTag.content = keywords;
-  }
+export function setPageMeta(meta: PageMeta): void {
+  document.title = meta.title;
+  updateMeta('meta[name="description"]', meta.description);
+  updateMeta('meta[name="keywords"]', meta.keywords);
+  updateMeta('meta[property="og:title"]', meta.title);
+  updateMeta('meta[property="og:description"]', meta.description);
 }
