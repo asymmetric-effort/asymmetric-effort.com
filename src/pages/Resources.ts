@@ -1,5 +1,4 @@
-import { createElement } from '@asymmetric-effort/specifyjs';
-import { setPageMeta } from '../utils/setPageMeta';
+import { createElement, useHead } from '@asymmetric-effort/specifyjs';
 
 interface Resource {
   name: string;
@@ -16,10 +15,14 @@ const resources: Resource[] = [
 ];
 
 export function Resources() {
-  setPageMeta({
+  useHead({
     title: 'Asymmetric Effort - Resources',
     description: 'Developer resources, coding standards and reference materials for Asymmetric Effort projects.',
     keywords: 'coding standards, developer resources, best practices, Asymmetric Effort',
+    og: {
+      title: 'Asymmetric Effort - Resources',
+      description: 'Developer resources, coding standards and reference materials for Asymmetric Effort projects.',
+    },
   });
   return createElement('main', null,
     createElement('h1', null, 'Resources'),

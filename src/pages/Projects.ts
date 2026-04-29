@@ -1,5 +1,4 @@
-import { createElement } from '@asymmetric-effort/specifyjs';
-import { setPageMeta } from '../utils/setPageMeta';
+import { createElement, useHead } from '@asymmetric-effort/specifyjs';
 
 interface Project {
   name: string;
@@ -46,10 +45,14 @@ const projects: Project[] = [
 ];
 
 export function Projects() {
-  setPageMeta({
+  useHead({
     title: 'Asymmetric Effort - Projects',
     description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions and GreyNet.',
     keywords: 'SpecifyJS, Scrutineer, Convocate, Actions, GreyNet, open source, TypeScript, security, collaboration',
+    og: {
+      title: 'Asymmetric Effort - Projects',
+      description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions and GreyNet.',
+    },
   });
   return createElement('main', null,
     createElement('h1', null, 'Our Projects'),

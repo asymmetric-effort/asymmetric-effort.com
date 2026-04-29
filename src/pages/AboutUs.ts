@@ -1,11 +1,14 @@
-import { createElement } from '@asymmetric-effort/specifyjs';
-import { setPageMeta } from '../utils/setPageMeta';
+import { createElement, useHead } from '@asymmetric-effort/specifyjs';
 
 export function AboutUs() {
-  setPageMeta({
+  useHead({
     title: 'Asymmetric Effort - About Us',
     description: 'Asymmetric Effort builds open-source frameworks, security tooling and collaboration platforms to help everyone stay safe online.',
     keywords: 'Asymmetric Effort, cybersecurity, open source, security tooling, about us',
+    og: {
+      title: 'Asymmetric Effort - About Us',
+      description: 'Asymmetric Effort builds open-source frameworks, security tooling and collaboration platforms to help everyone stay safe online.',
+    },
   });
   return createElement('main', null,
     createElement('h1', null, 'About Us'),
