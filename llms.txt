@@ -1,0 +1,9 @@
+# Asymmetric Effort
+
+> Asymmetric Effort builds open-source frameworks, security tooling and collaboration platforms to help everyone stay safe online.
+
+## Website: https://asymmetric-effort.com
+## Repository: https://github.com/asymmetric-effort
+
+## License: Proprietary
+## Author: Sam Caldwell
