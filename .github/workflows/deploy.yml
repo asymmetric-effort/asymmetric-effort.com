@@ -6,11 +6,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Clone SpecifyJS
         run: git clone https://github.com/asymmetric-effort/specifyjs.git ../specifyjs
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
       - name: Install dependencies
@@ -25,7 +25,7 @@ jobs:
             echo 'asymmetric-effort.com' > dist/CNAME
           fi
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: ${{ github.ref == 'refs/heads/main' && 'gh-pages' || 'dev-pages' }}
@@ -36,11 +36,11 @@ jobs:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Clone SpecifyJS
         run: git clone https://github.com/asymmetric-effort/specifyjs.git ../specifyjs
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
       - name: Install dependencies
@@ -63,7 +63,7 @@ jobs:
         run: npx playwright test
       - name: Upload test report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pdv-report
           path: playwright-report/
