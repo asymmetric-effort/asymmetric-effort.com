@@ -94,4 +94,33 @@ test.describe('SEO Verification', () => {
     await expect(page.locator('meta[property="fb:app_id"]')).toHaveCount(0);
   });
 
+  test('llms.txt is served and valid', async ({ request }) => {
+    const response = await request.get('/llms.txt');
+    expect(response.status()).toBe(200);
+    const body = await response.text();
+    expect(body).toContain('# Asymmetric Effort');
+    expect(body).toContain('https://asymmetric-effort.com');
+    expect(body).toContain('Sam Caldwell');
+  });
+
+  test('noscript fallback contains site content', async ({ page }) => {
+    await page.goto('/');
+    // The plugin's noscript block contains the ns-container class
+    const html = await page.evaluate(() => {
+      const noscripts = document.querySelectorAll('noscript');
+      for (const ns of noscripts) {
+        if (ns.textContent?.includes('ns-container')) return ns.innerHTML;
+      }
+      return '';
+    });
+    expect(html).toContain('About Us');
+    expect(html).toContain('Projects');
+    expect(html).toContain('Resources');
+    expect(html).toContain('SpecifyJS');
+    expect(html).toContain('Scrutineer');
+    expect(html).toContain('Convocate');
+    expect(html).toContain('GreyNet');
+    expect(html).toContain('Coding Standards');
+  });
+
 });
