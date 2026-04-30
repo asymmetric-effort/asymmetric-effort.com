@@ -29,7 +29,7 @@ export default defineConfig({
       siteUrl: 'https://asymmetric-effort.com',
       title: 'Asymmetric Effort',
       description: 'Asymmetric Effort builds open-source frameworks, security tooling and collaboration platforms to help everyone stay safe online.',
-      routes: ['/'],
+      routes: ['/', '/#/projects', '/#/resources'],
       author: 'Sam Caldwell',
       license: 'Proprietary',
       repository: 'https://github.com/asymmetric-effort',

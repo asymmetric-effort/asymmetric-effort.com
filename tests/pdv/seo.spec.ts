@@ -10,12 +10,14 @@ test.describe('SEO Verification', () => {
     expect(body).toContain('Sitemap: https://asymmetric-effort.com/sitemap.xml');
   });
 
-  test('sitemap.xml is served and valid', async ({ request }) => {
+  test('sitemap.xml is served and lists all routes', async ({ request }) => {
     const response = await request.get('/sitemap.xml');
     expect(response.status()).toBe(200);
     const body = await response.text();
     expect(body).toContain('<urlset');
     expect(body).toContain('<loc>https://asymmetric-effort.com/</loc>');
+    expect(body).toContain('<loc>https://asymmetric-effort.com/#/projects</loc>');
+    expect(body).toContain('<loc>https://asymmetric-effort.com/#/resources</loc>');
   });
 
   test('Open Graph tags are present', async ({ page }) => {
