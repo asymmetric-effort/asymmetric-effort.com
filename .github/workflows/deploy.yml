@@ -17,19 +17,13 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Configure CNAME
-        run: |
-          if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
-            echo 'dev.asymmetric-effort.com' > dist/CNAME
-          else
-            echo 'asymmetric-effort.com' > dist/CNAME
-          fi
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+        uses: asymmetric-effort/actions/actions/deploy-pages@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: ${{ github.ref == 'refs/heads/main' && 'gh-pages' || 'dev-pages' }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: ${{ github.ref == 'refs/heads/main' && 'gh-pages' || 'dev-pages' }}
+          cname: ${{ github.ref == 'refs/heads/main' && 'asymmetric-effort.com' || 'dev.asymmetric-effort.com' }}
 
   pdv:
     name: Post-Deployment Verification
