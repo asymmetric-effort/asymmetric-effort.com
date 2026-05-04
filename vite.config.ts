@@ -60,6 +60,7 @@ export default defineConfig({
               <li><a href="https://scrutineer.asymmetric-effort.com">Scrutineer</a> — Security analysis and auditing platform for identifying vulnerabilities and ensuring compliance across your infrastructure.</li>
               <li><a href="https://convocate.asymmetric-effort.com">Convocate</a> — A collaboration platform designed to bring teams together for secure, efficient communication and project coordination.</li>
               <li><a href="https://actions.asymmetric-effort.com">Actions</a> — Reusable GitHub Actions and CI/CD workflows for Asymmetric Effort projects.</li>
+              <li><a href="https://github.com/asymmetric-effort/linux-oidc-plugin">Linux PAM OIDC</a> — A Linux PAM module enabling OpenID Connect (OIDC) authentication for system login.</li>
               <li>GreyNet — Decentralized, peer-to-peer zero trust network access without reliance on centralized control planes.</li>
             </ul>
           `,

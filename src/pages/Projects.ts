@@ -35,6 +35,13 @@ const projects: Project[] = [
       'Reusable GitHub Actions and CI/CD workflows for Asymmetric Effort projects.',
   },
   {
+    name: 'Linux PAM OIDC',
+    url: 'https://github.com/asymmetric-effort/linux-oidc-plugin',
+    description:
+      'A Linux PAM module enabling OpenID Connect (OIDC) authentication for ' +
+      'system login, providing federated identity support at the OS level.',
+  },
+  {
     name: 'GreyNet',
     description:
       'GreyNet provides decentralized, peer-to-peer zero trust network access ' +
@@ -47,11 +54,11 @@ const projects: Project[] = [
 export function Projects() {
   useHead({
     title: 'Asymmetric Effort - Projects',
-    description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions and GreyNet.',
-    keywords: 'SpecifyJS, Scrutineer, Convocate, Actions, GreyNet, open source, TypeScript, security, collaboration',
+    description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC and GreyNet.',
+    keywords: 'SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC, GreyNet, open source, TypeScript, security, collaboration',
     og: {
       title: 'Asymmetric Effort - Projects',
-      description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions and GreyNet.',
+      description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC and GreyNet.',
     },
   });
   return createElement('main', null,

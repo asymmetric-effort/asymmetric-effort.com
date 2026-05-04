@@ -50,12 +50,13 @@ test.describe('Post-Deployment Verification', () => {
     await expect(page.locator('h1')).toContainText('Our Projects');
 
     const cards = page.locator('.project-card');
-    await expect(cards).toHaveCount(5);
+    await expect(cards).toHaveCount(6);
 
     await expect(page.locator('.project-card >> text=SpecifyJS')).toBeVisible();
     await expect(page.locator('.project-card >> text=Scrutineer')).toBeVisible();
     await expect(page.locator('.project-card >> text=Convocate')).toBeVisible();
     await expect(page.locator('.project-card h2', { hasText: 'Actions' })).toBeVisible();
+    await expect(page.locator('.project-card h2', { hasText: 'Linux PAM OIDC' })).toBeVisible();
     await expect(page.locator('.project-card h2', { hasText: 'GreyNet' })).toBeVisible();
   });
 
