@@ -179,8 +179,8 @@ test.describe('Post-Deployment Verification', () => {
     // Must show 404 status code in the error display
     await expect(page.getByText('404', { exact: true })).toBeVisible();
 
-    // Must show "Not Found" title
-    await expect(page.getByText('Not Found', { exact: true })).toBeVisible();
+    // Must show "Page Not Found" title
+    await expect(page.getByText('Page Not Found')).toBeVisible();
 
     // Must show the bad path in the description
     const description = page.locator('p', { hasText: '/mybadUrlExpects404' });

@@ -36,13 +36,16 @@ declare module '@asymmetric-effort/specifyjs/components/footer' {
   export function Footer(props: FooterProps): any;
 }
 
-declare module '@asymmetric-effort/specifyjs/components/http-404' {
-  export interface Http404Props {
+declare module '@asymmetric-effort/specifyjs/components/http-error-page' {
+  export interface HttpErrorPageProps {
+    statusCode: number;
+    title: string;
     description?: string;
     actionLabel?: string;
     onAction?: () => void;
+    showGoBack?: boolean;
   }
-  export function Http404(props: Http404Props): any;
+  export function HttpErrorPage(props: HttpErrorPageProps): any;
 }
 
 declare module '@asymmetric-effort/specifyjs/dom' {
