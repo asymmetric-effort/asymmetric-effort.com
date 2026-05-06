@@ -172,4 +172,36 @@ test.describe('Post-Deployment Verification', () => {
     await expect(links).toHaveCount(0);
   });
 
+  test('unknown route renders 404 error page', async ({ page }) => {
+    await page.goto('/#/mybadUrlExpects404');
+    await expect(page.locator('#root')).not.toBeEmpty();
+
+    // Must show 404 status code in the error display
+    await expect(page.getByText('404', { exact: true })).toBeVisible();
+
+    // Must show "Not Found" title
+    await expect(page.getByText('Not Found', { exact: true })).toBeVisible();
+
+    // Must show the bad path in the description
+    const description = page.locator('p', { hasText: '/mybadUrlExpects404' });
+    await expect(description).toBeVisible();
+
+    // Header and footer must still be present
+    await expect(page.locator('header')).toBeVisible();
+    await expect(page.locator('footer')).toBeVisible();
+  });
+
+  test('404 page has a working Go Home action', async ({ page }) => {
+    await page.goto('/#/mybadUrlExpects404');
+    await expect(page.getByText('404', { exact: true })).toBeVisible();
+
+    // Click the Go Home button
+    await page.getByText('Go Home').click();
+    await page.waitForTimeout(500);
+
+    // Should navigate back to the home page
+    expect(page.url()).toContain('#/');
+    await expect(page.locator('h1')).toContainText('About Us');
+  });
+
 });

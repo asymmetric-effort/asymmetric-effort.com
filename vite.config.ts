@@ -21,6 +21,7 @@ export default defineConfig({
     alias: {
       '@asymmetric-effort/specifyjs/dom': path.join(specifyCoreSrc, 'dom/index.ts'),
       '@asymmetric-effort/specifyjs/components/footer': path.join(specifyComponents, 'layout/footer/src/index.ts'),
+      '@asymmetric-effort/specifyjs/components/http-404': path.join(specifyComponents, 'errors/http-404/src/index.ts'),
       '@asymmetric-effort/specifyjs': path.join(specifyCoreSrc, 'index.ts'),
     },
   },

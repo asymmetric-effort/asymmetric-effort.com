@@ -1,6 +1,7 @@
 import '../css/index.css';
-import { createElement, Router, Route } from '@asymmetric-effort/specifyjs';
+import { createElement, Router, Route, useRouter } from '@asymmetric-effort/specifyjs';
 import { createRoot } from '@asymmetric-effort/specifyjs/dom';
+import { Http404 } from '@asymmetric-effort/specifyjs/components/http-404';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { AboutUs } from './pages/AboutUs';
@@ -24,12 +25,25 @@ if (
   location.replace('https://' + location.host + location.pathname + location.search + location.hash);
 }
 
+const knownPaths = ['/', '/projects', '/resources'];
+
+function NotFoundGuard() {
+  const { pathname, navigate } = useRouter();
+  if (knownPaths.includes(pathname)) return null;
+  return createElement(Http404, {
+    description: `The page "${pathname}" does not exist.`,
+    actionLabel: 'Go Home',
+    onAction: () => navigate('/'),
+  });
+}
+
 function App() {
   return createElement(Router, null,
     createElement(Header, null),
     createElement(Route, { path: '/', component: AboutUs, exact: true }),
     createElement(Route, { path: '/projects', component: Projects }),
     createElement(Route, { path: '/resources', component: Resources }),
+    createElement(NotFoundGuard, null),
     createElement(Footer, null),
   );
 }

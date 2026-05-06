@@ -36,6 +36,15 @@ declare module '@asymmetric-effort/specifyjs/components/footer' {
   export function Footer(props: FooterProps): any;
 }
 
+declare module '@asymmetric-effort/specifyjs/components/http-404' {
+  export interface Http404Props {
+    description?: string;
+    actionLabel?: string;
+    onAction?: () => void;
+  }
+  export function Http404(props: Http404Props): any;
+}
+
 declare module '@asymmetric-effort/specifyjs/dom' {
   export function createRoot(container: Element | null): { render(element: any): void };
 }
