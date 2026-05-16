@@ -8,18 +8,10 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: 'SpecifyJS',
-    url: 'https://specifyjs.asymmetric-effort.com',
+    name: 'Actions',
+    url: 'https://actions.asymmetric-effort.com',
     description:
-      'A declarative TypeScript UI framework with zero runtime dependencies, ' +
-      'built-in routing, and a 56-component library in under 4KB gzipped.',
-  },
-  {
-    name: 'Scrutineer',
-    url: 'https://scrutineer.asymmetric-effort.com',
-    description:
-      'Security analysis and auditing platform for identifying vulnerabilities ' +
-      'and ensuring compliance across your infrastructure.',
+      'Reusable GitHub Actions and CI/CD workflows for Asymmetric Effort projects.',
   },
   {
     name: 'Convocate',
@@ -27,19 +19,6 @@ const projects: Project[] = [
     description:
       'A collaboration platform designed to bring teams together for secure, ' +
       'efficient communication and project coordination.',
-  },
-  {
-    name: 'Actions',
-    url: 'https://actions.asymmetric-effort.com',
-    description:
-      'Reusable GitHub Actions and CI/CD workflows for Asymmetric Effort projects.',
-  },
-  {
-    name: 'Linux PAM OIDC',
-    url: 'https://github.com/asymmetric-effort/linux-oidc-plugin',
-    description:
-      'A Linux PAM module enabling OpenID Connect (OIDC) authentication for ' +
-      'system login, providing federated identity support at the OS level.',
   },
   {
     name: 'GreyNet',
@@ -57,11 +36,11 @@ const projects: Project[] = [
       'syntax and structure.',
   },
   {
-    name: 'YAMLlint',
-    url: 'https://yamllint.asymmetric-effort.com',
+    name: 'Linux PAM OIDC',
+    url: 'https://github.com/asymmetric-effort/linux-oidc-plugin',
     description:
-      'A browser-based YAML validator and formatter for verifying YAML ' +
-      'syntax and structure.',
+      'A Linux PAM module enabling OpenID Connect (OIDC) authentication for ' +
+      'system login, providing federated identity support at the OS level.',
   },
   {
     name: 'NogginLessDom',
@@ -69,6 +48,27 @@ const projects: Project[] = [
     description:
       'A headless DOM implementation for server-side rendering and testing ' +
       'without a browser environment.',
+  },
+  {
+    name: 'Scrutineer',
+    url: 'https://scrutineer.asymmetric-effort.com',
+    description:
+      'Security analysis and auditing platform for identifying vulnerabilities ' +
+      'and ensuring compliance across your infrastructure.',
+  },
+  {
+    name: 'SpecifyJS',
+    url: 'https://specifyjs.asymmetric-effort.com',
+    description:
+      'A declarative TypeScript UI framework with zero runtime dependencies, ' +
+      'built-in routing, and a 56-component library in under 4KB gzipped.',
+  },
+  {
+    name: 'YAMLlint',
+    url: 'https://yamllint.asymmetric-effort.com',
+    description:
+      'A browser-based YAML validator and formatter for verifying YAML ' +
+      'syntax and structure.',
   },
 ];
 
