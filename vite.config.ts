@@ -63,6 +63,9 @@ export default defineConfig({
               <li><a href="https://actions.asymmetric-effort.com">Actions</a> — Reusable GitHub Actions and CI/CD workflows for Asymmetric Effort projects.</li>
               <li><a href="https://github.com/asymmetric-effort/linux-oidc-plugin">Linux PAM OIDC</a> — A Linux PAM module enabling OpenID Connect (OIDC) authentication for system login.</li>
               <li>GreyNet — Decentralized, peer-to-peer zero trust network access without reliance on centralized control planes.</li>
+              <li><a href="https://jsonlint.asymmetric-effort.com">JsonLint</a> — A fast, browser-based JSON validator and formatter for verifying JSON syntax and structure.</li>
+              <li><a href="https://yamllint.asymmetric-effort.com">YAMLlint</a> — A browser-based YAML validator and formatter for verifying YAML syntax and structure.</li>
+              <li><a href="https://nogginlessdom.asymmetric-effort.com">NogginLessDom</a> — A headless DOM implementation for server-side rendering and testing without a browser environment.</li>
             </ul>
           `,
         },

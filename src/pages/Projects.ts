@@ -49,29 +49,52 @@ const projects: Project[] = [
       'authorize each other directly using cryptographic identity, establishing ' +
       'secure channels only after mutual verification.',
   },
+  {
+    name: 'JsonLint',
+    url: 'https://jsonlint.asymmetric-effort.com',
+    description:
+      'A fast, browser-based JSON validator and formatter for verifying JSON ' +
+      'syntax and structure.',
+  },
+  {
+    name: 'YAMLlint',
+    url: 'https://yamllint.asymmetric-effort.com',
+    description:
+      'A browser-based YAML validator and formatter for verifying YAML ' +
+      'syntax and structure.',
+  },
+  {
+    name: 'NogginLessDom',
+    url: 'https://nogginlessdom.asymmetric-effort.com',
+    description:
+      'A headless DOM implementation for server-side rendering and testing ' +
+      'without a browser environment.',
+  },
 ];
 
 export function Projects() {
   useHead({
     title: 'Asymmetric Effort - Projects',
-    description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC and GreyNet.',
-    keywords: 'SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC, GreyNet, open source, TypeScript, security, collaboration',
+    description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC, GreyNet, JsonLint, YAMLlint and NogginLessDom.',
+    keywords: 'SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC, GreyNet, JsonLint, YAMLlint, NogginLessDom, open source, TypeScript, security, collaboration',
     og: {
       title: 'Asymmetric Effort - Projects',
-      description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC and GreyNet.',
+      description: 'Open-source projects by Asymmetric Effort including SpecifyJS, Scrutineer, Convocate, Actions, Linux PAM OIDC, GreyNet, JsonLint, YAMLlint and NogginLessDom.',
     },
   });
   return createElement('main', null,
-    createElement('h1', null, 'Our Projects'),
-    ...projects.map((project) =>
-      createElement('div', { className: 'project-card', key: project.name },
-        createElement('h2', null,
-          project.url
-            ? createElement('a', { href: project.url, target: '_blank', rel: 'noopener noreferrer' }, project.name)
-            : project.name
-        ),
-        createElement('p', null, project.description),
-      )
+    createElement('h1', null, 'Current Projects'),
+    createElement('div', { className: 'project-list' },
+      ...projects.map((project) =>
+        createElement('div', { className: 'project-card', key: project.name },
+          createElement('h2', null,
+            project.url
+              ? createElement('a', { href: project.url, target: '_blank', rel: 'noopener noreferrer' }, project.name)
+              : project.name
+          ),
+          createElement('p', null, project.description),
+        )
+      ),
     ),
   );
 }

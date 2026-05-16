@@ -47,10 +47,10 @@ test.describe('Post-Deployment Verification', () => {
 
   test('projects page loads and lists all projects', async ({ page }) => {
     await page.goto('/#/projects');
-    await expect(page.locator('h1')).toContainText('Our Projects');
+    await expect(page.locator('h1')).toContainText('Current Projects');
 
     const cards = page.locator('.project-card');
-    await expect(cards).toHaveCount(6);
+    await expect(cards).toHaveCount(9);
 
     await expect(page.locator('.project-card >> text=SpecifyJS')).toBeVisible();
     await expect(page.locator('.project-card >> text=Scrutineer')).toBeVisible();
@@ -58,6 +58,9 @@ test.describe('Post-Deployment Verification', () => {
     await expect(page.locator('.project-card h2', { hasText: 'Actions' })).toBeVisible();
     await expect(page.locator('.project-card h2', { hasText: 'Linux PAM OIDC' })).toBeVisible();
     await expect(page.locator('.project-card h2', { hasText: 'GreyNet' })).toBeVisible();
+    await expect(page.locator('.project-card h2', { hasText: 'JsonLint' })).toBeVisible();
+    await expect(page.locator('.project-card h2', { hasText: 'YAMLlint' })).toBeVisible();
+    await expect(page.locator('.project-card h2', { hasText: 'NogginLessDom' })).toBeVisible();
   });
 
   test('project links use HTTPS', async ({ page }) => {
@@ -75,7 +78,7 @@ test.describe('Post-Deployment Verification', () => {
     await expect(page.locator('h1')).toContainText('About Us');
 
     await page.locator('nav >> text=Projects').click();
-    await expect(page.locator('h1')).toContainText('Our Projects');
+    await expect(page.locator('h1')).toContainText('Current Projects');
 
     await page.locator('nav >> text=About Us').click();
     await expect(page.locator('h1')).toContainText('About Us');
@@ -162,6 +165,29 @@ test.describe('Post-Deployment Verification', () => {
       (img: HTMLImageElement) => img.complete && img.naturalWidth > 0
     );
     expect(loaded).toBe(true);
+  });
+
+  test('project list container is scrollable', async ({ page }) => {
+    await page.goto('/#/projects');
+    const projectList = page.locator('.project-list');
+    await expect(projectList).toBeVisible();
+    const overflowY = await projectList.evaluate(
+      (el) => getComputedStyle(el).overflowY
+    );
+    expect(overflowY).toBe('auto');
+  });
+
+  test('new projects have correct links', async ({ page }) => {
+    await page.goto('/#/projects');
+
+    const jsonlintLink = page.locator('.project-card a', { hasText: 'JsonLint' });
+    await expect(jsonlintLink).toHaveAttribute('href', 'https://jsonlint.asymmetric-effort.com');
+
+    const yamllintLink = page.locator('.project-card a', { hasText: 'YAMLlint' });
+    await expect(yamllintLink).toHaveAttribute('href', 'https://yamllint.asymmetric-effort.com');
+
+    const nogginlessdomLink = page.locator('.project-card a', { hasText: 'NogginLessDom' });
+    await expect(nogginlessdomLink).toHaveAttribute('href', 'https://nogginlessdom.asymmetric-effort.com');
   });
 
   test('GreyNet project has no external link', async ({ page }) => {

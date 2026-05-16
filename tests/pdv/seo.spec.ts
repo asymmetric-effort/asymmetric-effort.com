@@ -274,12 +274,15 @@ test.describe('SEO Verification', () => {
     expect(html).toContain('cybersecurity');
     expect(html).toContain('peace of mind');
 
-    // Projects section — all five projects
+    // Projects section — all nine projects
     expect(html).toContain('SpecifyJS');
     expect(html).toContain('Scrutineer');
     expect(html).toContain('Convocate');
     expect(html).toContain('Actions');
     expect(html).toContain('GreyNet');
+    expect(html).toContain('JsonLint');
+    expect(html).toContain('YAMLlint');
+    expect(html).toContain('NogginLessDom');
 
     // Resources section
     expect(html).toContain('Coding Standards');
@@ -310,6 +313,9 @@ test.describe('SEO Verification', () => {
     expect(urls).toContain('https://scrutineer.asymmetric-effort.com');
     expect(urls).toContain('https://convocate.asymmetric-effort.com');
     expect(urls).toContain('https://actions.asymmetric-effort.com');
+    expect(urls).toContain('https://jsonlint.asymmetric-effort.com');
+    expect(urls).toContain('https://yamllint.asymmetric-effort.com');
+    expect(urls).toContain('https://nogginlessdom.asymmetric-effort.com');
     expect(urls).toContain('https://coding-standards.asymmetric-effort.com');
   });
 
