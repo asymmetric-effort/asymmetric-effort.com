@@ -88,6 +88,7 @@ test.describe('SEO Verification', () => {
       'https://asymmetric-effort.com/',
       'https://asymmetric-effort.com/#/projects',
       'https://asymmetric-effort.com/#/resources',
+      'https://asymmetric-effort.com/#/status',
     ];
 
     // Extract all <loc> values
